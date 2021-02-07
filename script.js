@@ -1,9 +1,15 @@
 const searchButton = () => {
     const search = document.getElementById('search-menu').value;
+    document.getElementById('search-menu').value ="";
+    if(search == ''){
+        document.getElementById("error").innerText="Enter Category plz"
+    }
+    else{
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search}`
     fetch(url)
         .then(res => res.json())
-        .then(data => displayMenu(data.meals))    
+        .then(data => displayMenu(data.meals))
+    }    
 }
 
 
