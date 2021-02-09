@@ -5,7 +5,7 @@ const searchButton = () => {
         document.getElementById("error").innerText="Enter Category plz"
     }
     else{
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search}`
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayMenu(data.meals))
@@ -15,6 +15,7 @@ const searchButton = () => {
 
 const displayMenu = foods => {
     const mainMenu = document.getElementById('menu-list');
+    mainMenu.innerHTML="";
     foods.forEach(food => {
         const foodDiv = document.createElement('div');
         const mealId = food.idMeal
@@ -35,6 +36,7 @@ const mealIngredient = (id) =>{
 }
 const recipe = items => {
     const ingredientList = document.getElementById('ingredient-list');
+    ingredientList.innerHTML = "";
     items.forEach(item => {
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `<div class="card" style="width: 18rem;" >
